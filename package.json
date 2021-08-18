@@ -1,6 +1,6 @@
 {
 	"name": "@brawcode/react-spaces",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"main": "dist/index.js",
 	"module": "dist/es/index.js",
 	"types": "dist/index.d.ts",
@@ -12,13 +12,13 @@
 		"name": "Allan Eagle",
 		"url": "https://www.allaneagle.com"
 	},
-    "np": {
+	"np": {
 		"contents": "dist",
-        "branch": "main"
+		"branch": "main"
 	},
-    "publishConfig": {
-        "access": "public"
-    },
+	"publishConfig": {
+		"access": "public"
+	},
 	"bugs": "https://github.com/aeagle/react-spaces/issues",
 	"homepage": "https://allaneagle.com/projects/react-spaces",
 	"keywords": [
