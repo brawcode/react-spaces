@@ -23,3 +23,5 @@ yarn-error.log*
 **/.rpt2_cache
 **/.next
 **/storybook-static
+# Local Netlify folder
+.netlify
