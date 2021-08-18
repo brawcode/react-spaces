@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { SizeUnit } from "src/core-types";
 
-export interface SerializerProps {
+export interface PersistenceLayoutProps {
 	name: string;
 }
 
 type SaveFunc = (key: string, size: SizeUnit) => void;
 type GetFunc = (params: { key?: string; fallback: SizeUnit }) => SizeUnit | undefined;
 
-export interface SerializerContext {
+export interface PersistentLayoutContext {
 	save: SaveFunc;
 	get: GetFunc;
 }
@@ -17,12 +17,12 @@ export interface SavedLayout {
 	[key: string]: SizeUnit;
 }
 
-const Context = React.createContext<SerializerContext>({
+const Context = React.createContext<PersistentLayoutContext>({
 	save: (key: string, size: SizeUnit) => {},
 	get: ({fallback}) => fallback,
 });
 
-const LayoutSerializer: React.FC<SerializerProps> = ({ name, children }) => {
+const PersistentLayout: React.FC<PersistenceLayoutProps> = ({ name, children }) => {
 	const [savedLayout, setSavedLayout] = useState<SavedLayout>({});
 
 	useEffect(() => {
@@ -47,6 +47,6 @@ const LayoutSerializer: React.FC<SerializerProps> = ({ name, children }) => {
 	return <Context.Provider value={{ save, get }}>{children}</Context.Provider>;
 };
 
-export const useLayoutSerializer = (): SerializerContext => React.useContext(Context)
+export const usePersistentLayout = (): PersistentLayoutContext => React.useContext(Context)
 
-export default LayoutSerializer;
+export default PersistentLayout;

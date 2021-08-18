@@ -4,7 +4,7 @@ import * as React from "react";
 import { Centered } from "./Centered";
 import { CenteredVertically } from "./CenteredVertically";
 import { shortuuid } from "../core-utils";
-import { useLayoutSerializer } from "./LayoutSerializer";
+import { usePersistentLayout } from "./PersistentLayout";
 
 function applyCentering(children: React.ReactNode, centerType: CenterType | undefined) {
 	switch (centerType) {
@@ -54,7 +54,7 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 		onTouchEnd: onTouchEnd,
 	};
 
-	const { save, get } = useLayoutSerializer();
+	const { save, get } = usePersistentLayout();
     
 	const onResizeEnd = (newSize: SizeUnit, domRect: DOMRect) => {
         if (props.i) save(props.i, newSize);

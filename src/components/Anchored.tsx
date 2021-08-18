@@ -3,7 +3,7 @@ import * as React from "react";
 import { Space } from "./Space";
 import * as PropTypes from "prop-types";
 import { commonProps } from "../core-react";
-import { useLayoutSerializer } from "./LayoutSerializer";
+import { usePersistentLayout } from "./PersistentLayout";
 
 interface IAnchorProps extends ICommonProps {
 	size: SizeUnit;
@@ -47,7 +47,7 @@ export const resizableProps = {
 };
 
 export const LeftResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => {
-	const { get } = useLayoutSerializer();
+	const { get } = usePersistentLayout();
 	return (
 		<Space
 			{...props}
@@ -74,7 +74,7 @@ export const Left: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resiza
 Left.propTypes = anchoredProps;
 
 export const TopResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => {
-	const { get } = useLayoutSerializer();
+	const { get } = usePersistentLayout();
 	return (
 		<Space
 			{...props}
@@ -101,7 +101,7 @@ export const Top: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizab
 Top.propTypes = anchoredProps;
 
 export const RightResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => {
-	const { get } = useLayoutSerializer();
+	const { get } = usePersistentLayout();
 	return (
 		<Space
 			{...props}
@@ -128,7 +128,7 @@ export const Right: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resiz
 Right.propTypes = anchoredProps;
 
 export const BottomResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => {
-	const { get } = useLayoutSerializer();
+	const { get } = usePersistentLayout();
 	return (
 		<Space
 			{...props}

@@ -176,7 +176,7 @@ export const ResizableProps = () => (
 	</>
 );
 
-export const LayoutSerializerProps = () => (
+export const PersistentLayoutProps = () => (
 	<>
 		<PropsHeader>LayoutSerializer properties</PropsHeader>
 		<Prop

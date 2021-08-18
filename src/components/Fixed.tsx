@@ -3,7 +3,7 @@ import * as React from "react";
 import { Space } from "./Space";
 import * as PropTypes from "prop-types";
 import { commonProps } from "../core-react";
-import { useLayoutSerializer } from "./LayoutSerializer";
+import { usePersistentLayout } from "./PersistentLayout";
 
 interface IFixedProps extends ICommonProps {
 	width?: SizeUnit;
@@ -11,7 +11,7 @@ interface IFixedProps extends ICommonProps {
 }
 
 export const Fixed: React.FC<IFixedProps> = ({ width, height, children, ...commonProps }) => {
-	const { get } = useLayoutSerializer();
+	const { get } = usePersistentLayout();
 	return (
 		<Space {...commonProps} type={Type.Fixed} position={{ width: get({ key: commonProps.i, fallback: width }), height: height }}>
 			{children}
