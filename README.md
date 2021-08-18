@@ -14,9 +14,17 @@ This fork aims to add additional functionality to the original project that does
 
 I would like to point out I highly suggest you support the original author. I spent a lot of time trying to find something as well engineered as this. I have kept the donation links in this readme which can be found at the bottom.
 
-&nbsp;  
-&nbsp;
+The documentation provided by this repo is a superset of the original documentation until a point this repository strays far enough away.
 
+&nbsp;  
+
+## Documentation
+
+Please see the [Original Repo](https://github.com/aeagle/react-spaces) for documentation regarding the base components.
+
+To view the Storybook for this repo with the additional components, [please go here](https://react-spaces.brawcode.com/)
+
+&nbsp;
 
 ## Components
 
