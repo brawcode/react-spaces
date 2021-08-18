@@ -1,0 +1,62 @@
+import { Meta, Story, Canvas, Props } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import LayoutSerializer from "../../LayoutSerializer";
+import { ViewPort, Left, Top, Right, Bottom, LeftResizable, TopResizable, RightResizable, BottomResizable, Fill } from "../../";
+import { green, blue, red, description, lorem } from "../Utils";
+import { CommonHeader, PropsTable, StandardProps, AnchoredProps, ResizableProps } from "../Utils";
+
+<CommonHeader />
+
+<Meta title="Basic examples/Saving layouts" />
+
+The `i` props acts as a unique identifier for the element and is what will be used to save and load the layout from storage. 
+It's important to note that if you opt for saving layouts, the `size` props acts as a **fallback** if the component has never been saved before
+
+### Simple example
+
+Resize the bottom element and then refresh your browser. You will see that it remembers it's size
+
+<Canvas>
+	<Story name="Simple example">
+        <LayoutSerializer name="storybook-simple-example">
+            <ViewPort>
+                <BottomResizable i="super-unique-id" style={green} size="50%" trackSize={true} onResizeStart={action('onResizeStart')} onResizeEnd={action('onResizeEnd')} >
+                    {description("I remember my size")}
+                </BottomResizable>
+            </ViewPort>
+        </LayoutSerializer>
+	</Story>
+</Canvas>
+
+### Complex example
+
+This complex example has many elements, as long as each has a unique `i` prop, they will be saved.
+
+<Canvas>
+	<Story name="Complex example">
+		<React.StrictMode>
+            <LayoutSerializer name="storybook-complex-example">
+                <ViewPort>
+                    <LeftResizable i="left" size="20%" style={blue} trackSize={true}>
+                        {description("Left")}
+                    </LeftResizable>
+                    <Fill style={green}>
+                        <TopResizable i="top" size="20%" style={red} trackSize={true}>
+                            {description("Top")}
+                        </TopResizable>
+                        <Fill style={green} trackSize={true}>
+                            {description("Fill")}
+                        </Fill>
+                        <BottomResizable i="bottom" size="20%" style={red} trackSize={true}>
+                            {description("Bottom")}
+                        </BottomResizable>
+                    </Fill>
+                    <RightResizable i="right" size="20%" style={blue} trackSize={true}>
+                        {description("Right")}
+                    </RightResizable>
+                </ViewPort>
+            </LayoutSerializer>
+		</React.StrictMode>
+	</Story>
+</Canvas>
