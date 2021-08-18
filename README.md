@@ -71,6 +71,23 @@ Centres the content of a space horizontally and vertically.
 
 Centres the content of a space vertically.
 
+**\<PersisentLayout /\>**
+
+Wrap around your layout and pass a unique name, then give each resizable component a unique identifier to persist the layout to local storage
+
+```tsx
+<PersistentLayout name="my-layout">
+  <ViewPort>
+    {/* Size now acts as an initial value */}
+    <LeftResizable i="area-a" size="20%" /> 
+    <Fill />
+    {/* Size now acts as an initial value */}
+    <RightResizable  i="area-b" size="20%" />
+  </ViewPort>
+</PersistentLayout>
+
+```
+
 ## Getting started
 
 To get started with React Spaces you need:

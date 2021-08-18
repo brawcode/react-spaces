@@ -3,6 +3,7 @@ import * as React from "react";
 import { Space } from "./Space";
 import * as PropTypes from "prop-types";
 import { commonProps } from "../core-react";
+import { usePersistentLayout } from "./PersistentLayout";
 
 interface IAnchorProps extends ICommonProps {
 	size: SizeUnit;
@@ -45,15 +46,22 @@ export const resizableProps = {
 	},
 };
 
-export const LeftResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => (
-	<Space {...props} type={Type.Anchored} anchor={AnchorType.Left} position={{ left: 0, top: 0, bottom: 0, rightResizable: true, width: size }}>
-		{children}
-	</Space>
-);
+export const LeftResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => {
+	const { get } = usePersistentLayout();
+	return (
+		<Space
+			{...props}
+			type={Type.Anchored}
+			anchor={AnchorType.Left}
+			position={{ left: 0, top: 0, bottom: 0, rightResizable: true, width: get({ key: props.i, fallback: size }) }}>
+			{children}
+		</Space>
+	);
+};
 
 LeftResizable.propTypes = resizableProps;
 
-export const Left: React.FC<IAnchorProps> = ({ size, children, resizable, ...commonProps }) => (
+export const Left: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
 	<Space
 		{...commonProps}
 		type={Type.Anchored}
@@ -65,15 +73,22 @@ export const Left: React.FC<IAnchorProps> = ({ size, children, resizable, ...com
 
 Left.propTypes = anchoredProps;
 
-export const TopResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => (
-	<Space {...props} type={Type.Anchored} anchor={AnchorType.Top} position={{ left: 0, top: 0, right: 0, bottomResizable: true, height: size }}>
-		{children}
-	</Space>
-);
+export const TopResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => {
+	const { get } = usePersistentLayout();
+	return (
+		<Space
+			{...props}
+			type={Type.Anchored}
+			anchor={AnchorType.Top}
+			position={{ left: 0, top: 0, right: 0, bottomResizable: true, height: get({ key: props.i, fallback: size }) }}>
+			{children}
+		</Space>
+	);
+};
 
 TopResizable.propTypes = resizableProps;
 
-export const Top: React.FC<IAnchorProps> = ({ size, children, resizable, ...commonProps }) => (
+export const Top: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
 	<Space
 		{...commonProps}
 		type={Type.Anchored}
@@ -85,15 +100,22 @@ export const Top: React.FC<IAnchorProps> = ({ size, children, resizable, ...comm
 
 Top.propTypes = anchoredProps;
 
-export const RightResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => (
-	<Space {...props} type={Type.Anchored} anchor={AnchorType.Right} position={{ bottom: 0, top: 0, right: 0, leftResizable: true, width: size }}>
-		{children}
-	</Space>
-);
+export const RightResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => {
+	const { get } = usePersistentLayout();
+	return (
+		<Space
+			{...props}
+			type={Type.Anchored}
+			anchor={AnchorType.Right}
+			position={{ bottom: 0, top: 0, right: 0, leftResizable: true, width: get({ key: props.i, fallback: size }) }}>
+			{children}
+		</Space>
+	);
+};
 
 RightResizable.propTypes = resizableProps;
 
-export const Right: React.FC<IAnchorProps> = ({ size, children, resizable, ...commonProps }) => (
+export const Right: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
 	<Space
 		{...commonProps}
 		type={Type.Anchored}
@@ -105,15 +127,22 @@ export const Right: React.FC<IAnchorProps> = ({ size, children, resizable, ...co
 
 Right.propTypes = anchoredProps;
 
-export const BottomResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => (
-	<Space {...props} type={Type.Anchored} anchor={AnchorType.Bottom} position={{ bottom: 0, left: 0, right: 0, topResizable: true, height: size }}>
-		{children}
-	</Space>
-);
+export const BottomResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ children, size, ...props }) => {
+	const { get } = usePersistentLayout();
+	return (
+		<Space
+			{...props}
+			type={Type.Anchored}
+			anchor={AnchorType.Bottom}
+			position={{ bottom: 0, left: 0, right: 0, topResizable: true, height: get({ key: props.i, fallback: size }) }}>
+			{children}
+		</Space>
+	);
+};
 
 BottomResizable.propTypes = resizableProps;
 
-export const Bottom: React.FC<IAnchorProps> = ({ size, children, resizable, ...commonProps }) => (
+export const Bottom: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
 	<Space
 		{...commonProps}
 		type={Type.Anchored}

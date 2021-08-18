@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, Props } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { ViewPort, BottomResizable, PersistentLayout } from "../../";
+import { green, description, lorem } from "../Utils";
+import { CommonHeader, PropsTable, PersistentLayoutProps} from "../Utils";
+
+<CommonHeader />
+
+<Meta title="Components/PersistentLayout" component={PersistentLayout} />
+
+## PersistentLayout
+
+<Canvas>
+	<Story name="Default">
+        <PersistentLayout name="storybook-layout-serializer-component">
+            <ViewPort>
+                <BottomResizable i="a" style={green} size="50%">
+                    {description("I remember my size")}
+                </BottomResizable>
+            </ViewPort>
+        </PersistentLayout>
+	</Story>
+</Canvas>
+
+<Story name="Properties">
+	<PropsTable>
+	    <PersistentLayoutProps />
+	</PropsTable>
+</Story>

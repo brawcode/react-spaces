@@ -11,4 +11,5 @@ export * from "./Positioned";
 export * from "./SpaceInfo";
 export * from "./ViewPort";
 export * from "./Options";
+export { usePersistentLayout, default as PersistentLayout } from "./PersistentLayout";
 export { ResizeHandlePlacement, AnchorType, CenterType, IPosition } from "../core-types";

@@ -1,9 +1,10 @@
-import { ISpaceProps, CenterType, ResizeHandlePlacement, AnchorType } from "../core-types";
+import { ISpaceProps, CenterType, ResizeHandlePlacement, AnchorType, SizeUnit } from "../core-types";
 import { useSpace, ParentContext, LayerContext, DOMRectContext } from "../core-react";
 import * as React from "react";
 import { Centered } from "./Centered";
 import { CenteredVertically } from "./CenteredVertically";
 import { shortuuid } from "../core-utils";
+import { usePersistentLayout } from "./PersistentLayout";
 
 function applyCentering(children: React.ReactNode, centerType: CenterType | undefined) {
 	switch (centerType) {
@@ -53,13 +54,22 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 		onTouchEnd: onTouchEnd,
 	};
 
+	const { save, get } = usePersistentLayout();
+    
+	const onResizeEnd = (newSize: SizeUnit, domRect: DOMRect) => {
+        if (props.i) save(props.i, newSize);
+		props.onResizeEnd?.(newSize, domRect);
+	};
+    
 	const { space, domRect, elementRef, resizeHandles } = useSpace({
-		...props,
+        ...props,
+		onResizeEnd,
 		...{ id: props.id || props.wrapperInstance["_react_spaces_uniqueid"] },
 	});
-
+    
 	React.useEffect(() => {
-		space.element = elementRef.current!;
+        space.element = elementRef.current!;
+        if (props.position) props.position.width = get({ key: props.i, fallback: props.position?.width });
 	}, []);
 
 	const userClasses = className ? className.split(" ").map((c) => c.trim()) : [];

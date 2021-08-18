@@ -57,6 +57,7 @@ export interface IPassThroughEvents {
 }
 
 export interface ICommonProps extends IPassThroughEvents {
+    i?: string;
 	id?: string;
 	className?: string;
 	style?: React.CSSProperties;

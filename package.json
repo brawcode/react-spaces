@@ -1,5 +1,5 @@
 {
-	"name": "react-spaces",
+	"name": "@brawcode/react-spaces",
 	"version": "0.2.2",
 	"main": "dist/index.js",
 	"module": "dist/es/index.js",
@@ -12,6 +12,13 @@
 		"name": "Allan Eagle",
 		"url": "https://www.allaneagle.com"
 	},
+    "np": {
+		"contents": "dist",
+        "branch": "main"
+	},
+    "publishConfig": {
+        "access": "public"
+    },
 	"bugs": "https://github.com/aeagle/react-spaces/issues",
 	"homepage": "https://allaneagle.com/projects/react-spaces",
 	"keywords": [
@@ -72,7 +79,7 @@
 		"sass-loader": "^8.0.2",
 		"ts-jest": "^25.4.0",
 		"ts-loader": "^6.2.1",
-		"tslib": "^1.10.0",
+		"tslib": "^2.3.1",
 		"typescript": "^3.9.9"
 	},
 	"resolutions": {
