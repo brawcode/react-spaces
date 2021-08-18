@@ -176,6 +176,18 @@ export const ResizableProps = () => (
 	</>
 );
 
+export const LayoutSerializerProps = () => (
+	<>
+		<PropsHeader>LayoutSerializer properties</PropsHeader>
+		<Prop
+			name="name"
+			type="string"
+			default={undefined}
+			description="The name of the layout. This will be the key used when serializing the layout to the local storage."
+		/>
+	</>
+);
+
 export const DemoUI = () => {
 	const [sidebarExpanded, setSidebarExpanded] = React.useState(true);
 

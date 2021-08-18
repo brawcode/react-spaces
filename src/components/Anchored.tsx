@@ -61,18 +61,15 @@ export const LeftResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ child
 
 LeftResizable.propTypes = resizableProps;
 
-export const Left: React.FC<IAnchorProps> = ({ size, children, resizable, ...commonProps }) => {
-	const { get } = useLayoutSerializer();
-	return (
-		<Space
-			{...commonProps}
-			type={Type.Anchored}
-			anchor={AnchorType.Left}
-			position={{ left: 0, top: 0, bottom: 0, rightResizable: resizable, width: get({ key: commonProps.i, fallback: size }) }}>
-			{children}
-		</Space>
-	);
-};
+export const Left: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
+	<Space
+		{...commonProps}
+		type={Type.Anchored}
+		anchor={AnchorType.Left}
+		position={{ left: 0, top: 0, bottom: 0, rightResizable: resizable, width: size }}>
+		{children}
+	</Space>
+);
 
 Left.propTypes = anchoredProps;
 
@@ -91,18 +88,15 @@ export const TopResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ childr
 
 TopResizable.propTypes = resizableProps;
 
-export const Top: React.FC<IAnchorProps> = ({ size, children, resizable, ...commonProps }) => {
-	const { get } = useLayoutSerializer();
-	return (
-		<Space
-			{...commonProps}
-			type={Type.Anchored}
-			anchor={AnchorType.Top}
-			position={{ left: 0, top: 0, right: 0, bottomResizable: resizable, height: get({ key: commonProps.i, fallback: size }) }}>
-			{children}
-		</Space>
-	);
-};
+export const Top: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
+	<Space
+		{...commonProps}
+		type={Type.Anchored}
+		anchor={AnchorType.Top}
+		position={{ left: 0, top: 0, right: 0, bottomResizable: resizable, height: size }}>
+		{children}
+	</Space>
+);
 
 Top.propTypes = anchoredProps;
 
@@ -121,18 +115,15 @@ export const RightResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ chil
 
 RightResizable.propTypes = resizableProps;
 
-export const Right: React.FC<IAnchorProps> = ({ size, children, resizable, ...commonProps }) => {
-	const { get } = useLayoutSerializer();
-	return (
-		<Space
-			{...commonProps}
-			type={Type.Anchored}
-			anchor={AnchorType.Right}
-			position={{ bottom: 0, top: 0, right: 0, leftResizable: resizable, width: get({ key: commonProps.i, fallback: size }) }}>
-			{children}
-		</Space>
-	);
-};
+export const Right: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
+	<Space
+		{...commonProps}
+		type={Type.Anchored}
+		anchor={AnchorType.Right}
+		position={{ bottom: 0, top: 0, right: 0, leftResizable: resizable, width: size }}>
+		{children}
+	</Space>
+);
 
 Right.propTypes = anchoredProps;
 
@@ -151,17 +142,14 @@ export const BottomResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ chi
 
 BottomResizable.propTypes = resizableProps;
 
-export const Bottom: React.FC<IAnchorProps> = ({ size, children, resizable, ...commonProps }) => {
-	const { get } = useLayoutSerializer();
-	return (
-		<Space
-			{...commonProps}
-			type={Type.Anchored}
-			anchor={AnchorType.Bottom}
-			position={{ bottom: 0, left: 0, right: 0, topResizable: resizable, height: get({ key: commonProps.i, fallback: size }) }}>
-			{children}
-		</Space>
-	);
-};
+export const Bottom: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
+	<Space
+		{...commonProps}
+		type={Type.Anchored}
+		anchor={AnchorType.Bottom}
+		position={{ bottom: 0, left: 0, right: 0, topResizable: resizable, height: size }}>
+		{children}
+	</Space>
+);
 
 Bottom.propTypes = anchoredProps;

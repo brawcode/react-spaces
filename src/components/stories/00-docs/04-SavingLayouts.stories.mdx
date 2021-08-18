@@ -8,13 +8,15 @@ import { CommonHeader, PropsTable, StandardProps, AnchoredProps, ResizableProps 
 
 <CommonHeader />
 
-<Meta title="React Spaces/Saving layouts" />
+<Meta title="React Spaces/Persisting layouts" />
 
-## Saving layouts
+## Persisting layouts
 
 React Spaces supports saving layouts by serializing them to the browsers local storage.
 
-To save your layouts, you must wrap your entire layout tree in a `LayoutSerializer` and ensure the relevant elements have the `i` prop:
+To save your layouts, you must wrap your entire layout tree in a `<LayoutSerializer />` and ensure the relevant elements have the `i` prop.
+
+This `i` prop applies to `<LeftResizable />`, `<RightResizable />`, `<TopResizable />`, `<BottomResizable />`.
 
 ```tsx
 <LayoutSerializer name="storybook-examples">
@@ -36,3 +38,6 @@ To save your layouts, you must wrap your entire layout tree in a `LayoutSerializ
     </ViewPort>
 </LayoutSerializer>
 ```
+
+I have opted to **not** support serialization for the `<Custom />`. I believe given that this component is designed to give complete control
+over how it is positioned and sizes, then the persistence should be up to the developer.

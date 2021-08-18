@@ -54,22 +54,22 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 		onTouchEnd: onTouchEnd,
 	};
 
-	const { save } = useLayoutSerializer();
-	// if (props.position) props.position.width = get(props.i, props.position?.width);
-
+	const { save, get } = useLayoutSerializer();
+    
 	const onResizeEnd = (newSize: SizeUnit, domRect: DOMRect) => {
-		if (props.i) save(props.i, newSize);
+        if (props.i) save(props.i, newSize);
 		props.onResizeEnd?.(newSize, domRect);
 	};
-
+    
 	const { space, domRect, elementRef, resizeHandles } = useSpace({
-		...props,
+        ...props,
 		onResizeEnd,
 		...{ id: props.id || props.wrapperInstance["_react_spaces_uniqueid"] },
 	});
-
+    
 	React.useEffect(() => {
-		space.element = elementRef.current!;
+        space.element = elementRef.current!;
+        if (props.position) props.position.width = get({ key: props.i, fallback: props.position?.width });
 	}, []);
 
 	const userClasses = className ? className.split(" ").map((c) => c.trim()) : [];
