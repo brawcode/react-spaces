@@ -1,6 +1,6 @@
 {
 	"name": "@brawcode/react-spaces",
-	"version": "0.3.0",
+	"version": "0.3.1-0",
 	"main": "dist/index.js",
 	"module": "dist/es/index.js",
 	"types": "dist/index.d.ts",
@@ -12,11 +12,15 @@
 		"name": "Allan Eagle",
 		"url": "https://www.allaneagle.com"
 	},
-    "contributors": [{ "name": "stephen@brawcode.com" }],
+	"contributors": [
+		{
+			"name": "stephen@brawcode.com"
+		}
+	],
 	"np": {
 		"contents": "dist",
 		"branch": "main",
-        "publish": false
+		"publish": false
 	},
 	"publishConfig": {
 		"access": "public"
@@ -32,8 +36,8 @@
 		"web",
 		"web ui",
 		"javascript library",
-        "layout",
-        "grid"
+		"layout",
+		"grid"
 	],
 	"license": "MIT",
 	"description": "An easy to understand and nestable layout system, React Spaces allow you to divide a page or container into anchored, scrollable and resizable spaces enabling you to build desktop type user interfaces in the browser.",
