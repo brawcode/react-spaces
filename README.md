@@ -1,81 +1,30 @@
 # React Spaces
 
-![NPM](https://img.shields.io/npm/v/react-spaces.svg) ![Azure Pipelines](https://allan-eagle.visualstudio.com/All%20projects/_apis/build/status/aeagle.react-spaces?branchName=master)
 
-An easy to understand and nestable layout system, React Spaces allow you to divide a page or container into anchored, scrollable and resizable spaces enabling you to build desktop/mobile type user interfaces in the browser. 
+A fork of the excellent UI library [React Spaces](https://github.com/aeagle/react-spaces) by [Allan Eagle](https://github.com/aeagle).
 
-Rather than a library of visual UI components, Spaces are intended to be the reusable foundational blocks for laying out a UI which responds neatly to view port resizes leaving you to fill them with whatever components you want.
-
-- No styling to achieve simple or complex layouts.
-- Spaces know how to behave in relation to each other and resize accordingly.
-- Spaces don't have any visual element to them (even padding or margins). You can fill them with whatever you want.
-
-**Version 0.2.0 release - read [release notes here](https://www.allaneagle.com/react-spaces/release-0.2.0).**
-
-View full documentation [here](https://www.allaneagle.com/react-spaces/demo/).
-
+&nbsp;
 <img src="https://www.allaneagle.com/react-spaces/react-spaces-demo.gif" width="100%" />
+&nbsp;
+---
 
-### Top level spaces
+## The Goal
 
-Used at the top level of all other spaces.
+This fork aims to add additional functionality to the original project that does not fit with the vision the author had. It is stated that `react-spaces` is a **resuable foundation** to build UI layouts. This means specific functionality that I find useful might not be for everyone, but for the people that want it, then it's available.
 
-**\<ViewPort \/>**
+I would like to point out I highly suggest you support the original author. I spent a lot of time trying to find something as well engineered as this. I have kept the donation links in this readme which can be found at the bottom.
 
-This space will take over the full viewport of the browser window. Resizing the browser window will automatically adjust the size of this space and all the nested spaces.
+&nbsp;  
+&nbsp;
 
-**\<Fixed /\>**
 
-This space can be given a height and optionally a width (by default it will size to 100% of it's container). All nested spaces will be contained within this fixed size space.
-
-### Anchored spaces
-
-These can be used within the top-level spaces **\<ViewPort /\>** and **\<Fixed /\>** or nested within other spaces.
-
-**\<Left /\>** and **\<Right /\>**
-
-A space anchored to the left or right of the parent container/space. A size can be specified in pixels or as a percentage to determine its width.
-
-**\<Top /\>** and **\<Bottom /\>**
-
-A space anchored to the top or bottom of the parent container/space. A size can be specified in pixels or as a percentage to determine its height.
-
-There are resizable versions of these components called **\<LeftResizable /\>**, **\<RightResizable /\>**, **\<TopResizable /\>** and **\<BottomResizable /\>** which allow the spaces to be resized from the outer edge by dragging with the mouse.
-
-### Other
-
-**\<Fill /\>**
-
-A space which consumes any available area left in the parent container/space taking into account any anchored spaces on every side.
-
-**\<Layer /\>**
-
-Layers allow you to create layers within a parent space, for example:
-
-```html
-<ViewPort>
-  <Layer zIndex="{0}">
-    <LeftResizable size="20%" /> // floating sidebar
-  </Layer>
-  <Layer zIndex="{1}">
-    <Fill />
-  </Layer>
-</ViewPort>
-```
-
-**\<Centered /\>**
-
-Centres the content of a space horizontally and vertically.
-
-**\<CenteredVertically /\>**
-
-Centres the content of a space vertically.
+## Components
 
 **\<PersisentLayout /\>**
 
 Wrap around your layout and pass a unique name, then give each resizable component a unique identifier to persist the layout to local storage
 
-```tsx
+```jsx
 <PersistentLayout name="my-layout">
   <ViewPort>
     {/* Size now acts as an initial value */}
@@ -88,23 +37,24 @@ Wrap around your layout and pass a unique name, then give each resizable compone
 
 ```
 
+&nbsp;
+
 ## Getting started
 
 To get started with React Spaces you need:
 
 ```typescript
-npm install react-spaces --save
+npm install @brawcode/react-spaces --save
 ```
 
 ```typescript
 import * as Spaces from "react-spaces";
 ```
-
-View full documentation [here](https://www.allaneagle.com/react-spaces/demo/).
+&nbsp;
 
 ## Donation
 
-If you find this library useful, consider making a small donation to fund a cup of coffee:
+Please support the author, [Allan Eagle](https://github.com/aeagle):
 
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AAYPWGUQBUDAA" 
     title="If you find this library useful, consider making a small donation to fund a cup of coffee" alt="Make Donation" style="text-decoration: none;">

@@ -7,19 +7,21 @@
 	"files": [
 		"dist/**/*.*"
 	],
-	"repository": "github:aeagle/react-spaces",
+	"repository": "github:brawcode/react-spaces",
 	"author": {
 		"name": "Allan Eagle",
 		"url": "https://www.allaneagle.com"
 	},
+    "contributors": [{ "name": "stephen@brawcode.com" }],
 	"np": {
 		"contents": "dist",
-		"branch": "main"
+		"branch": "main",
+        "publish": false
 	},
 	"publishConfig": {
 		"access": "public"
 	},
-	"bugs": "https://github.com/aeagle/react-spaces/issues",
+	"bugs": "https://github.com/brawcode/react-spaces/issues",
 	"homepage": "https://allaneagle.com/projects/react-spaces",
 	"keywords": [
 		"react",
@@ -29,7 +31,9 @@
 		"components",
 		"web",
 		"web ui",
-		"javascript library"
+		"javascript library",
+        "layout",
+        "grid"
 	],
 	"license": "MIT",
 	"description": "An easy to understand and nestable layout system, React Spaces allow you to divide a page or container into anchored, scrollable and resizable spaces enabling you to build desktop type user interfaces in the browser.",
@@ -93,7 +97,7 @@
 		"start": "rollup -c -w",
 		"build": "npm run build:prod",
 		"build:prod": "rollup -c",
-		"publish:beta": "npm publish --tag beta",
+		"publish:tag": "np",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
 		"test": "jest"
