@@ -40,7 +40,6 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 		onTouchMove,
 		onTouchEnd,
 		children,
-        handleRender
 	} = props;
 
 	const events = {
@@ -56,21 +55,21 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 	};
 
 	const { save, get } = usePersistentLayout();
-    
+
 	const onResizeEnd = (newSize: SizeUnit, domRect: DOMRect) => {
-        if (props.i) save(props.i, newSize);
+		if (props.i) save(props.i, newSize);
 		props.onResizeEnd?.(newSize, domRect);
 	};
-    
+
 	const { space, domRect, elementRef, resizeHandles } = useSpace({
-        ...props,
+		...props,
 		onResizeEnd,
 		...{ id: props.id || props.wrapperInstance["_react_spaces_uniqueid"] },
 	});
-    
+
 	React.useEffect(() => {
-        space.element = elementRef.current!;
-        if (props.position) props.position.width = get({ key: props.i, fallback: props.position?.width });
+		space.element = elementRef.current!;
+		if (props.position) props.position.width = get({ key: props.i, fallback: props.position?.width });
 	}, []);
 
 	const userClasses = className ? className.split(" ").map((c) => c.trim()) : [];
@@ -99,9 +98,7 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 
 	return (
 		<>
-			{resizeHandles.mouseHandles.map((handleProps) => (
-				handleRender?.(handleProps) || <div {...handleProps} />
-			))}
+			{resizeHandles.mouseHandles.map((handleProps) => handleRender?.(handleProps) || <div {...handleProps} />)}
 			{React.createElement(
 				props.as || "div",
 				{

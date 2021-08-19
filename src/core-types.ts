@@ -1,5 +1,4 @@
-import { ReactNode } from "react";
-import { IResizeHandleProps } from "./core-react";
+import React from "react";
 
 export enum Type {
 	ViewPort = "viewport",
@@ -60,11 +59,11 @@ export interface IPassThroughEvents {
 }
 
 export interface ICommonProps extends IPassThroughEvents {
-    i?: string;
+	i?: string;
 	id?: string;
 	className?: string;
 	style?: React.CSSProperties;
-	as?: string;
+	as?: keyof React.ReactDOM | React.ComponentType<ICommonProps>;
 	centerContent?: CenterType;
 	zIndex?: number;
 	scrollable?: boolean;
