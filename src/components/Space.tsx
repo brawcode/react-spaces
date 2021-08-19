@@ -5,6 +5,7 @@ import { Centered } from "./Centered";
 import { CenteredVertically } from "./CenteredVertically";
 import { shortuuid } from "../core-utils";
 import { usePersistentLayout } from "./PersistentLayout";
+import BreakpointProvider from "./Breakpoints";
 
 function applyCentering(children: React.ReactNode, centerType: CenterType | undefined) {
 	switch (centerType) {
@@ -64,6 +65,7 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 
 	const { space, domRect, elementRef, resizeHandles } = useSpace({
 		...props,
+		trackSize: !!props.breakpoints,
 		onResizeEnd,
 		...{ id: props.id || props.wrapperInstance["_react_spaces_uniqueid"] },
 	});
@@ -112,7 +114,11 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 				<div className={innerClasses.join(" ")} style={innerStyle}>
 					<ParentContext.Provider value={space.id}>
 						<LayerContext.Provider value={undefined}>
-							<DOMRectContext.Provider value={domRect}>{centeredContent}</DOMRectContext.Provider>
+							<DOMRectContext.Provider value={domRect}>
+								<BreakpointProvider domRect={domRect} breakpoints={props.breakpoints}>
+									{centeredContent}
+								</BreakpointProvider>
+							</DOMRectContext.Provider>
 						</LayerContext.Provider>
 					</ParentContext.Provider>
 				</div>,

@@ -69,6 +69,18 @@ export interface ICommonProps extends IPassThroughEvents {
 	zIndex?: number;
 	scrollable?: boolean;
 	trackSize?: boolean;
+	breakpoints?: BreakpointProps;
+}
+
+export interface BreakpointMap {
+	[key: string]: number;
+}
+export interface BreakpointProps {
+	onBreakpointHit?: (breakpoint: string) => void;
+	breakpoints: BreakpointMap;
+}
+export interface Breakpoint {
+	value: number;
 }
 
 export interface ISpaceProps extends ICommonProps {
@@ -78,7 +90,7 @@ export interface ISpaceProps extends ICommonProps {
 	position?: IPositionalProps | undefined;
 	handleSize?: number | undefined;
 	handlePlacement?: ResizeHandlePlacement;
-    handleRender?: (handleProps: IResizeHandleProps) => ReactNode
+	handleRender?: (handleProps: IResizeHandleProps) => ReactNode;
 	touchHandleSize?: number | undefined;
 	minimumSize?: number | undefined;
 	maximumSize?: number | undefined;
