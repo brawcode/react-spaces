@@ -1,6 +1,6 @@
 {
 	"name": "@brawcode/react-spaces",
-	"version": "0.3.2-0",
+	"version": "0.3.2",
 	"main": "dist/index.js",
 	"module": "dist/es/index.js",
 	"types": "dist/index.d.ts",
