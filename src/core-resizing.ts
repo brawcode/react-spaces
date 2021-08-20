@@ -19,7 +19,24 @@ export interface IResizeChange {
 	y: number;
 }
 
-export function createResize(store: ISpaceStore) {
+export interface ICreateResize {
+	startResize<T extends SyntheticEvent<HTMLElement, Event> | MouseEvent | TouchEvent>(
+		resizeType: ResizeType,
+		e: T,
+		space: ISpaceDefinition,
+		targetSize: ISize,
+		endEvent: EndEvent,
+		moveEvent: MoveEvent,
+		getCoords: (
+			event: T,
+		) => {
+			x: number;
+			y: number;
+		},
+	): void;
+}
+
+export function createResize(store: ISpaceStore): ICreateResize {
 	function onResize(
 		space: ISpaceDefinition,
 		targetSize: ISize,

@@ -14,7 +14,7 @@ interface IPositionedProps extends ICommonProps {
 	resizable?: boolean;
 }
 
-export const Positioned: React.FC<IPositionedProps> = ({ left, top, right, bottom, width, height, resizable, ...props }) => (
+export const Positioned: React.FC<IPositionedProps> = ({ left, top, right, bottom, width, height, ...props }) => (
 	<Space {...props} type={Type.Positioned} position={{ left: left, top: top, right: right, bottom: bottom, width: width, height: height }}>
 		{props.children}
 	</Space>

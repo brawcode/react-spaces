@@ -18,8 +18,10 @@ export interface SavedLayout {
 }
 
 const Context = React.createContext<PersistentLayoutContext>({
-	save: (key: string, size: SizeUnit) => {},
-	get: ({fallback}) => fallback,
+	save: (_key: string, _size: SizeUnit) => {
+		return;
+	},
+	get: ({ fallback }) => fallback,
 });
 
 const PersistentLayout: React.FC<PersistenceLayoutProps> = ({ name, children }) => {
@@ -47,6 +49,6 @@ const PersistentLayout: React.FC<PersistenceLayoutProps> = ({ name, children }) 
 	return <Context.Provider value={{ save, get }}>{children}</Context.Provider>;
 };
 
-export const usePersistentLayout = (): PersistentLayoutContext => React.useContext(Context)
+export const usePersistentLayout = (): PersistentLayoutContext => React.useContext(Context);
 
 export default PersistentLayout;

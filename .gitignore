@@ -25,3 +25,5 @@ yarn-error.log*
 **/storybook-static
 # Local Netlify folder
 .netlify
+
+.eslintcache

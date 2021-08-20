@@ -89,7 +89,7 @@ export function createStore(): ISpaceStore {
 					const anchoredSpacesInLayer = anchoredSpaces.filter((s) => s.zIndex === i);
 					const orderedSpaces = anchoredSpacesInLayer.filter((c) => c.order !== undefined);
 					const unorderedSpaces = anchoredSpacesInLayer.filter((c) => c.order === undefined);
-					var maxOrder = orderedSpaces.length > 0 ? orderedSpaces.map((a) => a.order!).reduce((a, b) => Math.max(a, b)) : 0;
+					const maxOrder = orderedSpaces.length > 0 ? orderedSpaces.map((a) => a.order!).reduce((a, b) => Math.max(a, b)) : 0;
 					result = [...result, ...[...orderedSpaces, ...unorderedSpaces.map((c, idx) => ({ ...c, ...{ order: maxOrder + idx + 1 } }))]];
 				});
 			});
@@ -98,7 +98,7 @@ export function createStore(): ISpaceStore {
 		};
 
 		const orderedSpaces = addDefaultOrders(parent.children);
-		for (var i = 0, len = orderedSpaces.length; i < len; i++) {
+		for (let i = 0, len = orderedSpaces.length; i < len; i++) {
 			const space = orderedSpaces[i];
 			let changed = false;
 

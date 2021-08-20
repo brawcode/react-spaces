@@ -18,15 +18,15 @@ import {
 } from "..";
 import "./Utils.scss";
 
-export const CommonHeader = () => (
+export const CommonHeader = (): JSX.Element => (
 	<div style={{ marginBottom: 25 }}>
 		<h1 style={{ fontSize: 30, marginTop: 0, marginBottom: 10 }}>React Spaces</h1>
 		<p>
-			<a href="https://www.npmjs.com/package/react-spaces" target="_blank">
+			<a href="https://www.npmjs.com/package/react-spaces" target="_blank" rel="noreferrer">
 				<img src="https://img.shields.io/npm/v/react-spaces.svg" alt="NPM" />
 			</a>
 			&nbsp;&nbsp;
-			<a href="https://GitHub.com/aeagle/react-spaces/" target="_blank">
+			<a href="https://GitHub.com/aeagle/react-spaces/" target="_blank" rel="noreferrer">
 				<img
 					src="https://img.shields.io/github/stars/aeagle/react-spaces.svg?style=social&amp;label=Star&amp;maxAge=2592000"
 					alt="GitHub stars"
@@ -77,7 +77,7 @@ export const Prop: React.FC<{ name: string; type: string; default?: string; desc
 	</tr>
 );
 
-export const StandardProps = () => (
+export const StandardProps = (): JSX.Element => (
 	<>
 		<PropsHeader>Standard properties</PropsHeader>
 		<Prop
@@ -129,14 +129,14 @@ export const StandardProps = () => (
 	</>
 );
 
-export const AnchoredProps = () => (
+export const AnchoredProps = (): JSX.Element => (
 	<>
 		<PropsHeader>Anchored properties</PropsHeader>
 		<Prop name="size" type="string | number" description="Initial size of space specified as a percentage or in pixels." />
 	</>
 );
 
-export const ResizableProps = () => (
+export const ResizableProps = (): JSX.Element => (
 	<>
 		<PropsHeader>Resizable properties</PropsHeader>
 		<Prop name="handleSize" type="number" default="5" description="Size of the resize handle in pixels." />
@@ -176,7 +176,7 @@ export const ResizableProps = () => (
 	</>
 );
 
-export const PersistentLayoutProps = () => (
+export const PersistentLayoutProps = (): JSX.Element => (
 	<>
 		<PropsHeader>LayoutSerializer properties</PropsHeader>
 		<Prop
@@ -188,7 +188,7 @@ export const PersistentLayoutProps = () => (
 	</>
 );
 
-export const DemoUI = () => {
+export const DemoUI = (): JSX.Element => {
 	const [sidebarExpanded, setSidebarExpanded] = React.useState(true);
 
 	return (
@@ -303,7 +303,7 @@ export const StateDriven: React.FC = () => {
 	);
 };
 
-export const AnchoredDefaultOrdering = () => {
+export const AnchoredDefaultOrdering = (): JSX.Element => {
 	return (
 		<ViewPort as="main">
 			<Left size="25%" style={blue} centerContent={CenterType.HorizontalVertical}>
@@ -322,7 +322,7 @@ export const AnchoredDefaultOrdering = () => {
 	);
 };
 
-export const SpaceDemoStacked1 = () => (
+export const SpaceDemoStacked1 = (): JSX.Element => (
 	<>
 		<Fixed height={400}>
 			<LeftResizable trackSize={true} handleSize={30} size="10%" order={1} style={{ backgroundColor: "#e0eee0" }}>
@@ -383,7 +383,7 @@ export const blue: CSSProperties = { backgroundColor: "rgb(224, 238, 238, 0.7)" 
 export const red: CSSProperties = { backgroundColor: "rgb(238, 224, 224, 0.7)" };
 export const green: CSSProperties = { backgroundColor: "rgb(224, 238, 224, 0.7)" };
 
-export const description = (props: string, additional?: React.ReactNode) => (
+export const description = (props: string, additional?: React.ReactNode): JSX.Element => (
 	<Info>
 		{(info) => (
 			<Centered>
@@ -457,6 +457,6 @@ export const lorem = (
 		illo amet nisi! Id esse a eaque recusandae facilis ducimus optio, nemo pariatur at. Quos unde fugit sint voluptatum dignissimos quod harum eos
 		magnam sit tempora, ab quisquam. Saepe sunt harum qui totam consectetur dolor, provident est error, quos, quidem aliquid blanditiis eaque
 		voluptates explicabo porro et molestias eius ipsam debitis unde molestiae ducimus. Recusandae, deserunt non ducimus nulla saepe nesciunt
-		quibusdam odit? Omnis, ut vitae!"
+		quibusdam odit? Omnis, ut vitae!
 	</div>
 );

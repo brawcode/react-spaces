@@ -1,16 +1,16 @@
 import { ISpaceDefinition, SizeUnit, ISize, ResizeHandlePlacement } from "./core-types";
 
-export function shortuuid() {
-	let firstPart = (Math.random() * 46656) | 0;
-	let secondPart = (Math.random() * 46656) | 0;
+export function shortuuid(): string {
+	const firstPart = (Math.random() * 46656) | 0;
+	const secondPart = (Math.random() * 46656) | 0;
 	return ("000" + firstPart.toString(36)).slice(-3) + ("000" + secondPart.toString(36)).slice(-3);
 }
 
-export function getSizeString(size: SizeUnit) {
+export function getSizeString(size: SizeUnit): string {
 	return typeof size === "string" ? size : `${size}px`;
 }
 
-export function css(size: ISize, dontAddCalc?: boolean) {
+export function css(size: ISize, dontAddCalc?: boolean): string | undefined {
 	if (size.size === 0 && size.adjusted.length === 0 && size.resized === 0) {
 		return `0px`;
 	}
@@ -41,16 +41,16 @@ export function css(size: ISize, dontAddCalc?: boolean) {
 	return `calc(${parts.join(" + ")})`;
 }
 
-export function coalesce<T>(...args: T[]) {
+export function coalesce<T>(...args: T[]): T | undefined {
 	return args.find((x) => x !== null && x !== undefined);
 }
 
-export function adjustmentsEqual(item1: SizeUnit[], item2: SizeUnit[]) {
+export function adjustmentsEqual(item1: SizeUnit[], item2: SizeUnit[]): boolean {
 	if (item1.length !== item2.length) {
 		return false;
 	}
 
-	for (var i = 0, len = item1.length; i < len; i++) {
+	for (let i = 0, len = item1.length; i < len; i++) {
 		if (item1[i] !== item2[i]) {
 			return false;
 		}
@@ -59,9 +59,9 @@ export function adjustmentsEqual(item1: SizeUnit[], item2: SizeUnit[]) {
 	return true;
 }
 
-export function throttle<F extends (...args: any) => any>(callback: F, limit: number) {
-	var wait = false; // Initially, we're not waiting
-	return function(...args: any) {
+export function throttle<F extends (...args: any[]) => unknown>(callback: F, limit: number): (...args: any[]) => void {
+	let wait = false; // Initially, we're not waiting
+	return function(...args: any[]) {
 		// We return a throttled function
 		if (!wait) {
 			// If we're not waiting
@@ -75,7 +75,7 @@ export function throttle<F extends (...args: any) => any>(callback: F, limit: nu
 	};
 }
 
-export function styleDefinition(space: ISpaceDefinition) {
+export function styleDefinition(space: ISpaceDefinition): string {
 	const cssElements: string[] = [];
 
 	const style: React.CSSProperties = {
@@ -172,7 +172,7 @@ export function styleDefinition(space: ISpaceDefinition) {
 	return cssElements.join(" ");
 }
 
-export function updateStyleDefinition(space: ISpaceDefinition) {
+export function updateStyleDefinition(space: ISpaceDefinition): void {
 	const definition = styleDefinition(space);
 	const existing = document.getElementById(`style_${space.id}`);
 
@@ -188,7 +188,7 @@ export function updateStyleDefinition(space: ISpaceDefinition) {
 	}
 }
 
-export function removeStyleDefinition(space: ISpaceDefinition) {
+export function removeStyleDefinition(space: ISpaceDefinition): void {
 	const existing = document.getElementById(`style_${space.id}`);
 	if (existing) {
 		document.head.removeChild(existing);

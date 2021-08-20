@@ -31,7 +31,7 @@ export const commonProps = {
 };
 
 export interface IReactSpacesOptions {
-	debug?: boolean
+	debug?: boolean;
 }
 
 export interface IReactEvents {
@@ -46,7 +46,16 @@ export interface IReactEvents {
 	onTouchEnd?: (event: React.TouchEvent<HTMLElement>) => void;
 }
 
-export function useForceUpdate() {
+export interface UseSpaceContext {
+	space: ISpaceDefinition;
+	resizeHandles: {
+		mouseHandles: IResizeHandleProps[];
+	};
+	domRect: DOMRect | undefined;
+	elementRef: React.MutableRefObject<HTMLElement | undefined>;
+}
+
+export function useForceUpdate(): () => void {
 	const [, setTick] = React.useState(0);
 	const update = React.useCallback(() => {
 		setTick((tick) => tick + 1);
@@ -54,7 +63,7 @@ export function useForceUpdate() {
 	return update;
 }
 
-export function useSpace(props: ISpaceProps) {
+export function useSpace(props: ISpaceProps): UseSpaceContext {
 	const store = currentStore;
 	const update = useForceUpdate();
 	const parent = React.useContext(ParentContext);
@@ -135,7 +144,11 @@ export interface IResizeHandleProps {
 	onTouchStart: (e: React.TouchEvent<HTMLElement>) => void;
 }
 
-export function useSpaceResizeHandles(store: ISpaceStore, space: ISpaceDefinition, position: IPositionalProps | undefined) {
+export function useSpaceResizeHandles(
+	store: ISpaceStore,
+	space: ISpaceDefinition,
+	position: IPositionalProps | undefined,
+): { mouseHandles: IResizeHandleProps[] } {
 	const mouseHandles: IResizeHandleProps[] = [];
 
 	if (position && position.rightResizable) {
@@ -179,6 +192,6 @@ export function useSpaceResizeHandles(store: ISpaceStore, space: ISpaceDefinitio
 	}
 
 	return {
-		mouseHandles
+		mouseHandles,
 	};
 }

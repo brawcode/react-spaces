@@ -1,5 +1,6 @@
 # React Spaces
 
+[![Testing and Linting](https://github.com/brawcode/react-spaces/actions/workflows/run-test.yml/badge.svg)](https://github.com/brawcode/react-spaces/actions/workflows/run-test.yml)
 
 A fork of the excellent UI library [React Spaces](https://github.com/aeagle/react-spaces) by [Allan Eagle](https://github.com/aeagle).
 

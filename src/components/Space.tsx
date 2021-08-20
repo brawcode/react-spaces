@@ -17,7 +17,7 @@ function applyCentering(children: React.ReactNode, centerType: CenterType | unde
 }
 
 export class Space extends React.Component<ISpaceProps> {
-	public render() {
+	public render(): JSX.Element {
 		return <SpaceInner {...this.props} wrapperInstance={this} />;
 	}
 }
