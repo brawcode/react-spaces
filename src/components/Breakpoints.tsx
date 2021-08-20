@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BreakpointMap, BreakpointProps } from "src/core-types";
+import { BreakpointMap, BreakpointProps } from "../core-types";
 
 export interface BreakpointProviderProps {
 	domRect?: DOMRect;
