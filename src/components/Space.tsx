@@ -55,7 +55,7 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 		onTouchEnd: onTouchEnd,
 	};
 
-	const { save, get } = usePersistentLayout();
+	const { save } = usePersistentLayout();
 
 	const onResizeEnd = (newSize: SizeUnit, domRect: DOMRect) => {
 		if (props.i) save(props.i, newSize);
@@ -70,7 +70,6 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 
 	React.useEffect(() => {
 		space.element = elementRef.current!;
-		if (props.position) props.position.width = get({ key: props.i, fallback: props.position?.width });
 	}, []);
 
 	const userClasses = className ? className.split(" ").map((c) => c.trim()) : [];
