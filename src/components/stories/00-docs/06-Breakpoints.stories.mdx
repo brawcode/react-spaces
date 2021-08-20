@@ -1,0 +1,54 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
+import { ViewPort, Fill } from "../../";
+import { description } from "../Utils";
+import { CommonHeader, PropsTable, StandardProps, AnchoredProps, ResizableProps } from "../Utils";
+
+<CommonHeader />
+
+<Meta title="React Spaces/Per space breakpoints" />
+
+# Breakpoints
+
+You can assign breakpoints to any type of Space by using the `breakpoints` prop. This can allow you to make modifications to the content
+based on the width of the space.
+
+The below example as 3 breakpoints.
+
+```tsx
+<BottomResizable 
+    size="50%" 
+    breakpoints={{ breakpoints: { sm: 150, md: 200, lg: 350 }}}
+>
+    <MyComponent />
+</BottomResizable>
+```
+
+You can then utilise the `useBreakpoints` hook in any componenent that is rendered inside the space.
+
+```tsx
+const MyComponent: React.FC = () => {
+    const bp = useBreakpoints();
+
+    if(bp === "sm") return <SmallComponent />
+    if(bp === "md") return <MediumComponent />
+    return <FallbackComponent />
+}
+```
+
+You can also pass a callback to the `breakpoints` prop so you can react to those events further up the tree, if that's something you want.
+
+```tsx
+
+const handleBreakpointHit = (bp: string) => {
+    switch(bp){
+        // Do some stuff
+    }
+}
+
+<BottomResizable 
+    size="50%" 
+    breakpoints={{ breakpoints: { sm: 150, md: 200, lg: 350 }, onBreakpointHit: (bp) => handleBreakpointHit(bp)}}
+>
+    <MyComponent />
+</BottomResizable>
+```
