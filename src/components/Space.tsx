@@ -113,11 +113,11 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 					...events,
 				},
 				<div className={innerClasses.join(" ")} style={innerStyle}>
-					<ParentContext.Provider value={space.id}>
-						<LayerContext.Provider value={undefined}>
-							<DOMRectContext.Provider value={domRect}>{centeredContent}</DOMRectContext.Provider>
-						</LayerContext.Provider>
-					</ParentContext.Provider>
+					<DOMRectContext.Provider value={domRect}>
+						<ParentContext.Provider value={space.id}>
+							<LayerContext.Provider value={undefined}>{centeredContent}</LayerContext.Provider>
+						</ParentContext.Provider>
+					</DOMRectContext.Provider>
 				</div>,
 			)}
 		</>

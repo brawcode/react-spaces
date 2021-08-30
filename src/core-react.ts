@@ -127,6 +127,10 @@ export function useSpace(props: ISpaceProps) {
 	return { space: space, resizeHandles: resizeHandles, domRect: domRect, elementRef: elementRef };
 }
 
+export const useSpaceBoundingBox = (): DOMRect | undefined  => {
+    return React.useContext(DOMRectContext)
+}
+
 export interface IResizeHandleProps {
 	id?: string;
 	key: string | number;
