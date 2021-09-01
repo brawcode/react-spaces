@@ -5,6 +5,7 @@ import { Centered } from "./Centered";
 import { CenteredVertically } from "./CenteredVertically";
 import { shortuuid } from "../core-utils";
 import { usePersistentLayout } from "./PersistentLayout";
+import { IAnchorProps } from "./Anchored";
 
 function applyCentering(children: React.ReactNode, centerType: CenterType | undefined) {
 	switch (centerType) {
@@ -22,7 +23,7 @@ export class Space extends React.Component<ISpaceProps> {
 	}
 }
 
-const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) => {
+const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space } & Pick<IAnchorProps, "handleRender">> = (props) => {
 	if (!props.id && !props.wrapperInstance["_react_spaces_uniqueid"]) {
 		props.wrapperInstance["_react_spaces_uniqueid"] = `s${shortuuid()}`;
 	}

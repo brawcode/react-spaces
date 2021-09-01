@@ -78,7 +78,6 @@ export interface ISpaceProps extends ICommonProps {
 	position?: IPositionalProps | undefined;
 	handleSize?: number | undefined;
 	handlePlacement?: ResizeHandlePlacement;
-    handleRender?: (handleProps: IResizeHandleProps) => ReactNode
 	touchHandleSize?: number | undefined;
 	minimumSize?: number | undefined;
 	maximumSize?: number | undefined;
