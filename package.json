@@ -1,6 +1,6 @@
 {
 	"name": "@brawcode/react-spaces",
-	"version": "0.3.2",
+	"version": "0.3.3",
 	"main": "dist/index.js",
 	"module": "dist/es/index.js",
 	"types": "dist/index.d.ts",
@@ -111,7 +111,7 @@
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
 		"test": "jest",
-        "lint": "node_modules/.bin/eslint src",
+		"lint": "node_modules/.bin/eslint src",
 		"prepare": "husky install"
 	},
 	"eslintConfig": {
