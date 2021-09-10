@@ -1,5 +1,4 @@
-import React, { ReactNode } from "react";
-import { IResizeHandleProps } from "./core-react";
+import React from "react";
 
 export enum Type {
 	ViewPort = "viewport",
@@ -78,7 +77,6 @@ export interface ISpaceProps extends ICommonProps {
 	position?: IPositionalProps | undefined;
 	handleSize?: number | undefined;
 	handlePlacement?: ResizeHandlePlacement;
-    handleRender?: (handleProps: IResizeHandleProps) => ReactNode
 	touchHandleSize?: number | undefined;
 	minimumSize?: number | undefined;
 	maximumSize?: number | undefined;

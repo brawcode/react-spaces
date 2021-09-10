@@ -5,6 +5,7 @@ import { Centered } from "./Centered";
 import { CenteredVertically } from "./CenteredVertically";
 import { shortuuid } from "../core-utils";
 import { usePersistentLayout } from "./PersistentLayout";
+import { IAnchorProps } from "./Anchored";
 
 function applyCentering(children: React.ReactNode, centerType: CenterType | undefined) {
 	switch (centerType) {
@@ -22,7 +23,7 @@ export class Space extends React.Component<ISpaceProps> {
 	}
 }
 
-const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) => {
+const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space } & Pick<IAnchorProps, "handleRender">> = (props) => {
 	if (!props.id && !props.wrapperInstance["_react_spaces_uniqueid"]) {
 		props.wrapperInstance["_react_spaces_uniqueid"] = `s${shortuuid()}`;
 	}
@@ -110,11 +111,11 @@ const SpaceInner: React.FC<ISpaceProps & { wrapperInstance: Space }> = (props) =
 					...events,
 				},
 				<div className={innerClasses.join(" ")} style={innerStyle}>
-					<ParentContext.Provider value={space.id}>
-						<LayerContext.Provider value={undefined}>
-							<DOMRectContext.Provider value={domRect}>{centeredContent}</DOMRectContext.Provider>
-						</LayerContext.Provider>
-					</ParentContext.Provider>
+					<DOMRectContext.Provider value={domRect}>
+						<ParentContext.Provider value={space.id}>
+							<LayerContext.Provider value={undefined}>{centeredContent}</LayerContext.Provider>
+						</ParentContext.Provider>
+					</DOMRectContext.Provider>
 				</div>,
 			)}
 		</>

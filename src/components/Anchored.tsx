@@ -2,10 +2,10 @@ import { ICommonProps, SizeUnit, Type, AnchorType, ResizeHandlePlacement } from 
 import * as React from "react";
 import { Space } from "./Space";
 import * as PropTypes from "prop-types";
-import { commonProps } from "../core-react";
+import { commonProps, IResizeHandleProps } from "../core-react";
 import { usePersistentLayout } from "./PersistentLayout";
 
-interface IAnchorProps extends ICommonProps {
+export interface IAnchorProps extends ICommonProps {
 	size: SizeUnit;
 	order?: number;
 	resizable?: boolean;
@@ -15,6 +15,7 @@ interface IAnchorProps extends ICommonProps {
 	maximumSize?: number;
 	onResizeStart?: () => void | boolean;
 	onResizeEnd?: (newSize: SizeUnit) => void;
+	handleRender?: (handleProps: IResizeHandleProps) => React.ReactNode;
 }
 
 export const anchoredProps = {
@@ -61,7 +62,7 @@ export const LeftResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ child
 
 LeftResizable.propTypes = resizableProps;
 
-export const Left: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
+export const Left: React.FC<Omit<IAnchorProps, "i" | "handleRender">> = ({ size, children, resizable, ...commonProps }) => (
 	<Space
 		{...commonProps}
 		type={Type.Anchored}
@@ -88,7 +89,7 @@ export const TopResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ childr
 
 TopResizable.propTypes = resizableProps;
 
-export const Top: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
+export const Top: React.FC<Omit<IAnchorProps, "i" | "handleRender">> = ({ size, children, resizable, ...commonProps }) => (
 	<Space
 		{...commonProps}
 		type={Type.Anchored}
@@ -115,7 +116,7 @@ export const RightResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ chil
 
 RightResizable.propTypes = resizableProps;
 
-export const Right: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
+export const Right: React.FC<Omit<IAnchorProps, "i" | "handleRender">> = ({ size, children, resizable, ...commonProps }) => (
 	<Space
 		{...commonProps}
 		type={Type.Anchored}
@@ -142,7 +143,7 @@ export const BottomResizable: React.FC<Omit<IAnchorProps, "resizable">> = ({ chi
 
 BottomResizable.propTypes = resizableProps;
 
-export const Bottom: React.FC<Omit<IAnchorProps, "i">> = ({ size, children, resizable, ...commonProps }) => (
+export const Bottom: React.FC<Omit<IAnchorProps, "i" | "handleRender">> = ({ size, children, resizable, ...commonProps }) => (
 	<Space
 		{...commonProps}
 		type={Type.Anchored}
